@@ -1,24 +1,18 @@
 // server.js
 
-// Import necessary modules
 const express = require('express');
-const path = require('path'); // Core Node.js module for working with file and directory paths
+const path = require('path');
 
-// Initialize the Express application
 const app = express();
-const PORT = process.env.PORT || 3000; // Use environment port or default to 3000
+const PORT = process.env.PORT || 3000; 
 
-// --- Middleware ---
 
-// 1. Set the view engine to EJS
+// Set the view engine to EJS
 app.set('view engine', 'ejs');
-// Optional: If your views directory is not named 'views', set it like this:
-// app.set('views', path.join(__dirname, 'my-custom-views-folder'));
 
-// 2. Serve static files (CSS, images, etc.) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 3. Custom Middleware to check working hours
+// Custom Middleware to check working hours
 const checkWorkingHours = (req, res, next) => {
   const now = new Date();
   const day = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
@@ -30,9 +24,8 @@ const checkWorkingHours = (req, res, next) => {
   console.log(`Current Time: Day ${day}, Hour ${hour}. Is Working: ${isWorkingDay && isWorkingHour}`); // For debugging
 
   if (isWorkingDay && isWorkingHour) {
-    next(); // Continue to the next middleware or route handler
+    next(); 
   } else {
-    // If outside working hours, render an "unavailable" page or send a message
     res.status(403).render('unavailable', {
       pageTitle: 'Service Unavailable'
     });
