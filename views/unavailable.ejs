@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> - My WebApp</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container unavailable-page">
+        <h1>Service Currently Unavailable</h1>
+        <p>We apologize, but our web application is only accessible during working hours:</p>
+        <p><strong>Monday to Friday, from 9:00 AM to 5:00 PM.</strong></p>
+        <p>Please try again during these times.</p>
+        <p><a href="javascript:location.reload();">Try Reloading</a></p>
+    </div>
+    <footer>
+        <p>© <%= new Date().getFullYear() %> My Timed WebApp. All rights reserved.</p>
+    </footer>
+</body>
+</html>
